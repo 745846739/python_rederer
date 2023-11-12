@@ -1,0 +1,8 @@
+wk: {{ aes(random(length),kek) }}
+origin_length: 16
+length: {{ origin_length }}
+a_factor: {{ random(length) }}
+b_factor: {{ random(length) }}
+kek: {{ aes(kek_plain,derive_key(a_factor,b_factor)) }}
+kek2: {{ aes(kek_plain,derive_key(a_factor,b_factor)) }}
+kek_plain: {{ random(length) }}
